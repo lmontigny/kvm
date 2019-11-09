@@ -36,3 +36,11 @@ default shell is tcsh, to change
 chsh -s /usr/local/bin/bash someuser
 ```
 Vi mode in tcsh with `binkey -v`
+
+# Launch & Usage
+```
+virsh list --all
+virsh start freebsd
+virt-viewer freebsd
+virsh shutdown freebsd
+```
