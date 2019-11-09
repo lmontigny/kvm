@@ -44,3 +44,10 @@ virsh start freebsd
 virt-viewer freebsd
 virsh shutdown freebsd
 ```
+# Network
+```
+sudo virsh net-start default 
+virsh net-edit default
+sudo virsh net-list --all
+sudo virsh net-autostart --network default
+```
