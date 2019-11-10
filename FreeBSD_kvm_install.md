@@ -54,10 +54,49 @@ sudo virsh net-autostart --network default
 Find port and IP
 ```
 virsh dumpxml freebsd | grep vnc
+//<graphics type='vnc' port='5901' autoport='yes' listen='127.0.0.1'>
 ```
-Open port 22 if needed on host, start ssh
+# 1. SSH
+source: https://www.blackhole-networks.com/Cheatsheets/SerialConsole/
+In FreeBSD VM:
+
+Configure the bootloader to use the serial console by adding the line console="comconsole" to the /boot/loader.conf file.
+```
+echo 'console="comconsole"' >> /boot/loader.conf
+```
+Edit /etc/ttys and find the ttyu0 entry.
+
+Serial terminals
+
+The 'dialup' keyword identifies dialin lines to login, fingerd etc.
+```
+ttyu0	"/usr/libexec/getty std.9600"	dialup	off secure
+```
+Change this to:
+
+Serial terminals
+
+The 'dialup' keyword identifies dialin lines to login, fingerd etc.
+```
+ttyu0	"/usr/libexec/getty std.9600"	vt100	on secure
+```
+
+
+# 2. VNC Set Up SSH Tunneling on Linux
+Open port 22 if needed on host, start ssh service
+By default VNC connections don’t use encryption, so it is recommended to use an SSH Tunnel to secure your session.
 ```
 sudo apt-get install openssh-server
-service ssh start
-sudo ssh <username>@192.168.2.105  (local ip found with "ip a")
+sudo service ssh status    
+sudo service ssh start
+//(local ip found with "ip a"), test it, should connect, before port 22 closed error
+ssh {user}@{KVM-host-IP-here} -L 5901:127.0.0.1:5901
+ssh vivek@192.168.2.15 -L 5901:127.0.0.1:5901
+```
+VNC connection
+```
+sudo apt install tightvncserver
+sudo apt-get install xtightvncviewer
+
+
 ```
