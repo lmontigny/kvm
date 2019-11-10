@@ -58,6 +58,7 @@ virsh dumpxml freebsd | grep vnc
 ```
 # 1. SSH
 source: https://www.blackhole-networks.com/Cheatsheets/SerialConsole/
+
 In FreeBSD VM:
 
 Configure the bootloader to use the serial console by adding the line console="comconsole" to the /boot/loader.conf file.
@@ -80,7 +81,13 @@ The 'dialup' keyword identifies dialin lines to login, fingerd etc.
 ```
 ttyu0	"/usr/libexec/getty std.9600"	vt100	on secure
 ```
+reboot
 
+Try to connect on host:
+```
+virsh list --all
+virsh connect <ID>
+```
 
 # 2. VNC Set Up SSH Tunneling on Linux
 Open port 22 if needed on host, start ssh service
