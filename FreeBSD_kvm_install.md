@@ -98,12 +98,15 @@ sudo service ssh status
 sudo service ssh start
 //(local ip found with "ip a"), test it, should connect, before port 22 closed error
 ssh {user}@{KVM-host-IP-here} -L 5901:127.0.0.1:5901
-ssh vivek@192.168.2.15 -L 5901:127.0.0.1:5901
 ```
+example: ssh vivek@192.168.2.15 -L 5901:127.0.0.1:5901
+
+`127.0.0.1`=localhost
+        
+
 VNC connection
 ```
 sudo apt install tightvncserver
-sudo apt-get install xtightvncviewer
-
-
+sudo apt-get install xvnc4viewer
+xvncviewer localhost:5901
 ```
