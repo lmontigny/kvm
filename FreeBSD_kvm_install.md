@@ -86,7 +86,7 @@ reboot
 Try to connect on host:
 ```
 virsh list --all
-virsh connect <ID>
+virsh console <ID>
 ```
 
 # 2. VNC Set Up SSH Tunneling on Linux
