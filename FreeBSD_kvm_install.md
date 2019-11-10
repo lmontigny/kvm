@@ -51,3 +51,7 @@ virsh net-edit default
 sudo virsh net-list --all
 sudo virsh net-autostart --network default
 ```
+Find port and IP
+```
+virsh dumpxml freebsd | grep vnc
+```
