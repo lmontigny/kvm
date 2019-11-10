@@ -55,3 +55,9 @@ Find port and IP
 ```
 virsh dumpxml freebsd | grep vnc
 ```
+Open port 22 if needed on host, start ssh
+```
+sudo apt-get install openssh-server
+service ssh start
+sudo ssh <username>@192.168.2.105  (local ip found with "ip a")
+```
